@@ -26,12 +26,19 @@ function searchImage() {
 }
 
 function getAPI () {
-  const divImage = document.querySelector('.image1');
-  const img = document.createElement('img');
   fetch(`${url}${whatSearch}`)
   .then((response) => response.json())
-  .then((element) => img.src = element.collection.items[0].links[0].href);
-  divImage.appendChild(img)
+  .then((element) => {
+    for (let index = 0; index < 4; index += 1) {
+      const img = document.createElement('img');
+      img.src = element.collection.items[index].links[0].href;
+      img.style.width = '200px';
+      img.style.height = '200px';
+      const divImage = document.querySelector(`.image${index + 1}`);
+      console.log(divImage);
+      divImage.appendChild(img);
+    }
+  });
 }
 
 function selectPlanet(event) {
@@ -46,4 +53,4 @@ window.onload = () => {
   console.log(sistemaSolar);
 }
 
-module.exports = { sectionPlanet, searchImage, getApi, selectPlanet };
+// module.exports = { sectionPlanet, searchImage, getApi, selectPlanet };
