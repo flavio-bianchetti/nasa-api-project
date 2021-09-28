@@ -46,6 +46,11 @@ header .about-us:hover {
   cursor: pointer;
 }
 
+.project-name {
+  font-size: 40px;
+  font-weight: 200;
+}
+
 main {
   display: flex;
   padding: 20px;
@@ -138,14 +143,14 @@ main {
 .images {
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
   justify-content: space-between;
   padding: 50px;
 }
 
 .images div {
   margin-bottom: 30px;
-  width: 400px;
+  width: 22%;
   height: 300px;
   border: 1px solid whitesmoke;
 }
