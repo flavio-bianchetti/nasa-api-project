@@ -1,5 +1,6 @@
 const url = 'https://images-api.nasa.gov/search?q='
 let whatSearch;
+let namePlanet;
 const sistemaSolar = {
   Sol: 'O Sol é a estrela central do Sistema Solar. Todos os outros corpos do Sistema Solar giram ao seu redor. A distância da Terra ao Sol é de cerca de 150 milhões de quilômetros e a luz solar demora aproximadamente 8 minutos para chegar à Terra.',
 
@@ -45,12 +46,21 @@ function selectPlanet(event) {
   const parent = event.target.parentNode;
   const planet = parent.className.split(' ')[1];
   whatSearch = planet;
+  namePlanet = parent.children[0].innerText;
   getAPI();
+  getInfo();
+}
+
+function getInfo() {
+  const planets = Object.keys(sistemaSolar);
+  const pname = document.querySelector('.planet-name');
+  const pdescription = document.querySelector('.planet-description');
+  pname.innerText = planets.find((element) => element === namePlanet);
+  pdescription.innerText = sistemaSolar[namePlanet];
 }
 
 window.onload = () => {
   searchImage();
-  console.log(sistemaSolar);
 }
 
 // module.exports = { sectionPlanet, searchImage, getApi, selectPlanet };
