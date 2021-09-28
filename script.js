@@ -33,8 +33,6 @@ function getAPI () {
     for (let index = 0; index < 4; index += 1) {
       const img = document.createElement('img');
       img.src = element.collection.items[index].links[0].href;
-      img.style.width = '200px';
-      img.style.height = '200px';
       const divImage = document.querySelector(`.image${index + 1}`);
       console.log(divImage);
       divImage.appendChild(img);
