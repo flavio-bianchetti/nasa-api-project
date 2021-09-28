@@ -31,7 +31,7 @@ function getAPI () {
   fetch(`${url}${whatSearch}`)
   .then((response) => response.json())
   .then((element) => img.src = element.collection.items[0].links[0].href);
-  body.appendChild(img)
+  divImage.appendChild(img)
 }
 
 function selectPlanet(event) {
