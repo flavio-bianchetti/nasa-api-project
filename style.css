@@ -146,6 +146,7 @@ main {
   flex-wrap: no-wrap;
   justify-content: space-between;
   padding: 50px;
+  
 }
 
 .images div {
@@ -153,6 +154,11 @@ main {
   width: 22%;
   height: 300px;
   border: 1px solid whitesmoke;
+}
+
+.images img {
+  height:100%; 
+  width:100%;
 }
 
 @keyframes transitionIn {
