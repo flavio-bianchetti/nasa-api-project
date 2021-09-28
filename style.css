@@ -18,6 +18,7 @@ header {
   background-image: linear-gradient(45deg, #010108, #20115b);
   border-radius: 30px ;
   border: 2px solid whitesmoke;
+  animation: transitionIn 2s;
 }
 
 header .title-logo {
@@ -56,6 +57,7 @@ main {
   border: 2px solid whitesmoke;
   background-image: linear-gradient(45deg, #010108, #20115b);
   cursor: url('assets/rocket.png'), pointer;
+  animation: transitionIn 3s;
 }
 
 .div-planet p {
@@ -68,6 +70,12 @@ main {
 }
 
 .div-planet:hover {
+  font-size: 100px;
+  transition: 0.3s;
+}
+
+.div-planet:active {
+  color: red;
   font-size: 100px;
   transition: 0.3s;
 }
@@ -108,11 +116,12 @@ main {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 800px;
+  height: fit-content;
   margin-top: 20px;
   border-radius: 30px;
   border: 2px solid whitesmoke;
   background-image: linear-gradient(45deg, #010108, #20115b);
+  animation: transitionIn 4s;
 }
 
 .section-about .planet-name {
@@ -121,6 +130,7 @@ main {
 }
 
 .section-about .planet-description {
+  width: 50%;
   font-size: 20px;
   font-weight: 400;
 }
@@ -138,4 +148,16 @@ main {
   width: 400px;
   height: 300px;
   border: 1px solid whitesmoke;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: rotateX(-10);
+  }
+  
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
 }
