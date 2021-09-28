@@ -27,6 +27,7 @@ function searchImage() {
 }
 
 function getAPI () {
+  cleanImages();
   fetch(`${url}${whatSearch}`)
   .then((response) => response.json())
   .then((element) => {
@@ -55,6 +56,13 @@ function getInfo() {
   const pdescription = document.querySelector('.planet-description');
   pname.innerText = planets.find((element) => element === namePlanet);
   pdescription.innerText = sistemaSolar[namePlanet];
+}
+
+function cleanImages() {
+  for (let index = 0; index < 4; index += 1) {
+    const divImage = document.querySelector(`.image${index + 1}`);
+    divImage.innerHTML = '';
+  }
 }
 
 window.onload = () => {
