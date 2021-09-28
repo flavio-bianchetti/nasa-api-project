@@ -26,7 +26,7 @@ function searchImage() {
 }
 
 function getAPI () {
-  const body = document.querySelector('body');
+  const divImage = document.querySelector('.image1');
   const img = document.createElement('img');
   fetch(`${url}${whatSearch}`)
   .then((response) => response.json())
