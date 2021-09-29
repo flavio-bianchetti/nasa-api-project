@@ -2,6 +2,7 @@ const url = 'https://images-api.nasa.gov/search?keywords=';
 const sectionPlanets = document.querySelector('.section-planets');
 const planetName = document.querySelector('.planet-name');
 const planetDescription = document.querySelector('.planet-description');
+const audio = new Audio('./music/Interstellar Main Theme - Hans Zimmer (HQ)_50k.mp3');
 let whatSearch = '';
 let namePlanet = '';
 const solarSystem = {
@@ -81,6 +82,9 @@ function searchImage() {
 
 window.onload = () => {
   searchImage();
+  cheet('v q v', function () {
+    audio.play();
+  });
 }
 
 // module.exports = { cleanImages, getInfo, isPlanet, isNotPlanet,
