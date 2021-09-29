@@ -1,7 +1,10 @@
-const url = 'https://images-api.nasa.gov/search?q='
-let whatSearch;
-let namePlanet;
-const sistemaSolar = {
+const url = 'https://images-api.nasa.gov/search?keywords=';
+const sectionPlanets = document.querySelector('.section-planets');
+const planetName = document.querySelector('.planet-name');
+const planetDescription = document.querySelector('.planet-description');
+let whatSearch = '';
+let namePlanet = '';
+const solarSystem = {
   Sol: 'O Sol é a estrela central do Sistema Solar. Todos os outros corpos do Sistema Solar giram ao seu redor. A distância da Terra ao Sol é de cerca de 150 milhões de quilômetros e a luz solar demora aproximadamente 8 minutos para chegar à Terra.',
 
   Mercúrio: 'Mercúrio é o menor e mais interno planeta do Sistema Solar, orbitando o Sol a cada 88 dias terrestres. A sua aparência é brilhante quando observado da Terra e é o planeta que passa a maior parte do tempo sendo o mais próximo do nosso.',
@@ -21,43 +24,6 @@ const sistemaSolar = {
   Netuno: 'Netuno é o último a partir do Sol desde a reclassificação de Plutão para a categoria de planeta anão, o planeta é formado por um pequeno núcleo rochoso ao redor do qual encontra-se uma camada formada possivelmente por água, amônia e metano sobre a qual situa-se sua turbulenta atmosfera, constituída predominantemente de hidrogênio e hélio.',
 }
 
-function searchImage() {
-  const sectionPlanets = document.querySelector('.section-planets');
-  sectionPlanets.addEventListener('click', selectPlanet);
-}
-
-function getAPI () {
-  cleanImages();
-  fetch(`${url}${whatSearch}`)
-  .then((response) => response.json())
-  .then((element) => {
-    for (let index = 0; index < 4; index += 1) {
-      const img = document.createElement('img');
-      img.src = element.collection.items[index].links[0].href;
-      const divImage = document.querySelector(`.image${index + 1}`);
-      console.log(divImage);
-      divImage.appendChild(img);
-    }
-  });
-}
-
-function selectPlanet(event) {
-  const parent = event.target.parentNode;
-  const planet = parent.className.split(' ')[1];
-  whatSearch = planet;
-  namePlanet = parent.children[0].innerText;
-  getAPI();
-  getInfo();
-}
-
-function getInfo() {
-  const planets = Object.keys(sistemaSolar);
-  const pname = document.querySelector('.planet-name');
-  const pdescription = document.querySelector('.planet-description');
-  pname.innerText = planets.find((element) => element === namePlanet);
-  pdescription.innerText = sistemaSolar[namePlanet];
-}
-
 function cleanImages() {
   for (let index = 0; index < 4; index += 1) {
     const divImage = document.querySelector(`.image${index + 1}`);
@@ -65,8 +31,59 @@ function cleanImages() {
   }
 }
 
-window.onload = () => {
-  searchImage();
+function getInfo() {
+  const planets = Object.keys(solarSystem);
+  planetName.innerText = planets.find((element) => element === namePlanet);
+  planetDescription.innerText = solarSystem[namePlanet];
 }
 
-// module.exports = { sectionPlanet, searchImage, getApi, selectPlanet };
+function isPlanet(element) {
+  const totalElementsAPI = element.collection.items.length;
+  const numImages = Math.floor(Math.random() * (totalElementsAPI - 4));
+  for (let index = 0; index < 4; index += 1) {
+    const img = document.createElement('img');
+    img.src = element.collection.items[numImages + index].links[0].href;
+    const divImage = document.querySelector(`.image${index + 1}`);
+    divImage.innerText = '';
+    divImage.appendChild(img);
+    console.log(img.src);
+  }
+}
+
+function messageLoading(message) {
+  for (let index = 0; index < 4; index += 1) {
+    const divImage = document.querySelector(`.image${index + 1}`);
+    divImage.innerText = message;
+  }
+}
+
+function getAPI(myFunction) {
+  cleanImages();
+  messageLoading('loading...');
+  fetch(`${url}${whatSearch}, image of ${whatSearch}, picture of ${whatSearch}`)
+  .then((response) => response.json())
+  .then((element) => myFunction(element));
+}
+
+function selectPlanet(event) {
+  if (event.target.parentNode.className.split(' ')[0] === 'div-planet') {
+    const parent = event.target.parentNode;
+    const planet = parent.className.split(' ')[1];
+    whatSearch = planet;
+    namePlanet = parent.children[0].innerText;
+    getAPI(isPlanet);
+    getInfo();
+  }
+}
+
+function searchImage() {
+  sectionPlanets.addEventListener('click', selectPlanet);
+}
+
+window.onload = () => {
+  searchImage();
+  teste();
+}
+
+// module.exports = { cleanImages, getInfo, isPlanet, isNotPlanet,
+  // getAPI, selectPlanet,  searchImage };
