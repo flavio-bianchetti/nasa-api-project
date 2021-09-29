@@ -273,3 +273,9 @@ main {
     transform: rotateX(0);
   }
 }
+
+@media (max-width: 1366px){
+  .section-about .planet-description {
+    width: 80%;
+  }
+}

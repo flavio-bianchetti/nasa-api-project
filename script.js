@@ -46,7 +46,6 @@ function isPlanet(element) {
     const divImage = document.querySelector(`.image${index + 1}`);
     divImage.innerText = '';
     divImage.appendChild(img);
-    console.log(img.src);
   }
 }
 
@@ -82,7 +81,6 @@ function searchImage() {
 
 window.onload = () => {
   searchImage();
-  teste();
 }
 
 // module.exports = { cleanImages, getInfo, isPlanet, isNotPlanet,
