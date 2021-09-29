@@ -151,6 +151,10 @@ main {
   font-weight: 400;
 }
 
+.loading {
+  text-align: center;
+}
+
 .images {
   display: flex;
   width: 100%;
@@ -260,6 +264,11 @@ main {
   font-size: 14px;
   width: fit-content;
 
+}
+
+.astronaut {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @keyframes transitionIn {
