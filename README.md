@@ -2,7 +2,7 @@
 
 This repository contains the project "Escolha o seu Destino", developed as a group, in HTML, CSS, JavaScript and using the _"[NASA API](https://api.nasa.gov/)"_ which provides a catalog of images of the planets.
 
-![flavio-bianchetti-nasa-api-project](nasa-api-project.mov)
+![flavio-bianchetti-nasa-api-project](nasa-api-project.gif)
 
 ### Authors:
 
